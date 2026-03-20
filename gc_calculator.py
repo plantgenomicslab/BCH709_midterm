@@ -20,7 +20,7 @@ def parse_fasta(filename):
                 header = line[1:]
                 sequences[header] = ''
             else:
-                sequences[header] = line
+                sequences[header] += line
 
     return sequences
 
