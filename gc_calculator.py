@@ -20,13 +20,14 @@ def parse_fasta(filename):
                 header = line[1:]
                 sequences[header] = ''
             else:
-                sequences[header] = line
+                sequences[header] += line
 
     return sequences
 
 def calculate_gc(sequence):
     """Calculate GC content as a percentage"""
-    gc_count = sequence.count('G') + sequence.count('C')
+    sequence = sequence.upper()
+    gc_count = sequence.count('G') +  sequence.count('C')
     gc_content = gc_count / len(sequence) * 100
     return gc_content
 
@@ -34,7 +35,7 @@ def filter_by_length(sequences, min_length):
     """Filter sequences shorter than min_length"""
     filtered = {}
     for header, seq in sequences.items():
-        if len(seq) > min_length:
+        if len(seq) >= min_length:
             filtered[header] = seq
     return filtered
 
@@ -44,7 +45,7 @@ def main():
         sys.exit(1)
 
     input_file = sys.argv[1]
-    min_length = sys.argv[2]
+    min_length = int(sys.argv[2])
 
     sequences = parse_fasta(input_file)
     filtered = filter_by_length(sequences, min_length)
@@ -55,5 +56,4 @@ def main():
         print(f"{header}\t{len(seq)}\t{gc:.2f}")
 
 if __name__ == '__main__':
-    main()
-```
+				main()
