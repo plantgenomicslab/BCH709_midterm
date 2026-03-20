@@ -26,7 +26,7 @@ def parse_fasta(filename):
 
 def calculate_gc(sequence):
     """Calculate GC content as a percentage"""
-    gc_count = sequence.count('G') + sequence.count('C')
+    gc_count = sequence.count('G') + sequence.count('C') + sequence.count('g') + sequence.count('c')
     gc_content = gc_count / len(sequence) * 100
     return gc_content
 
