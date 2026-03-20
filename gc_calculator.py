@@ -34,7 +34,7 @@ def filter_by_length(sequences, min_length):
     """Filter sequences shorter than min_length"""
     filtered = {}
     for header, seq in sequences.items():
-        if len(seq) > min_length:
+        if len(seq) >= min_length:
             filtered[header] = seq
     return filtered
 
