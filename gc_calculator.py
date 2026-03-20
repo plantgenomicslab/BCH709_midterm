@@ -31,7 +31,6 @@ def calculate_gc(sequence):
     gc_count = seq.count('G') + seq.count('C')
     gc_content = gc_count / len(sequence) * 100
     return gc_content
-
 def filter_by_length(sequences, min_length):
     """Filter sequences shorter than min_length"""
     filtered = {}
